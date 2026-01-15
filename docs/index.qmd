@@ -1,6 +1,6 @@
 ---
-title: "DSCI 542 Lab 2"
-subtitle: "Creating a Blog Post for Your Audience"
+title: "The Cure to Range Anxiety"
+subtitle: "Battery Lifetime Prediction with Machine Learning"
 format: 
   html:
     toc: true
