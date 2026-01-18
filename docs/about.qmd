@@ -1,5 +1,7 @@
 ---
-title: "About"
+title: "About the Author"
 ---
 
-About this site
+[GitHub: @Jacob-F-Cann](https://github.com/Jacob-F-Cann)
+
+[DSCI_542_Lab2 Repo](https://github.com/Jacob-F-Cann/542_Lab2_Blog_Post)

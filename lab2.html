@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Cure to Range Anxiety – My Data Science Blog</title>
+<title>DSCI 542 Lab 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,188 +23,168 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-38b6b0d36bc119bcff6dcc430fd5de38.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-<script>
+<script src="lab2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lab2_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="lab2_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="lab2_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="lab2_files/libs/quarto-html/popper.min.js"></script>
+<script src="lab2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lab2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lab2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lab2_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="lab2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lab2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lab2_files/libs/bootstrap/bootstrap-244749d80f78171387253f5101c0a771.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="quarto-light">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">My Data Science Blog</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">The Cure to Range Anxiety</h1>
-            <p class="subtitle lead">Battery Lifetime Prediction with Machine Learning</p>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-should-we-care-about-battery-lifetime-prediction" id="toc-why-should-we-care-about-battery-lifetime-prediction" class="nav-link active" data-scroll-target="#why-should-we-care-about-battery-lifetime-prediction"><u>Why Should we Care about Battery Lifetime Prediction?</u></a></li>
+  <li><a href="#lab-assignment-instructions" id="toc-lab-assignment-instructions" class="nav-link active" data-scroll-target="#lab-assignment-instructions">Lab Assignment Instructions</a></li>
+  <li><a href="#question-1-understand-your-audience" id="toc-question-1-understand-your-audience" class="nav-link" data-scroll-target="#question-1-understand-your-audience">Question 1: Understand your audience</a></li>
+  <li><a href="#question-2-write-a-data-science-blog" id="toc-question-2-write-a-data-science-blog" class="nav-link" data-scroll-target="#question-2-write-a-data-science-blog">Question 2: Write a data science blog</a>
+  <ul class="collapse">
+  <li><a href="#guideline-to-get-started" id="toc-guideline-to-get-started" class="nav-link" data-scroll-target="#guideline-to-get-started">Guideline to get started</a></li>
+  <li><a href="#types-of-blog-post-in-data-science" id="toc-types-of-blog-post-in-data-science" class="nav-link" data-scroll-target="#types-of-blog-post-in-data-science">Types of blog post in data science</a></li>
+  <li><a href="#length" id="toc-length" class="nav-link" data-scroll-target="#length">Length</a></li>
+  <li><a href="#how-to-write-your-blog" id="toc-how-to-write-your-blog" class="nav-link" data-scroll-target="#how-to-write-your-blog">How to write your blog</a></li>
+  <li><a href="#some-prompts-to-get-you-started-optional" id="toc-some-prompts-to-get-you-started-optional" class="nav-link" data-scroll-target="#some-prompts-to-get-you-started-optional">Some prompts to get you started (Optional)</a></li>
+  </ul></li>
+  <li><a href="#blog-post" id="toc-blog-post" class="nav-link" data-scroll-target="#blog-post">Blog Post:</a>
+  <ul class="collapse">
+  <li><a href="#why-should-we-care-about-battery-lifetime-prediction" id="toc-why-should-we-care-about-battery-lifetime-prediction" class="nav-link" data-scroll-target="#why-should-we-care-about-battery-lifetime-prediction"><u>Why Should we Care about Battery Lifetime Prediction?</u></a></li>
   <li><a href="#battery-liftime-prediciton-in-era-of-ai" id="toc-battery-liftime-prediciton-in-era-of-ai" class="nav-link" data-scroll-target="#battery-liftime-prediciton-in-era-of-ai"><u>Battery Liftime Prediciton in Era of AI</u></a></li>
   <li><a href="#problems-with-the-machine-learning-approach" id="toc-problems-with-the-machine-learning-approach" class="nav-link" data-scroll-target="#problems-with-the-machine-learning-approach"><u><strong>Problems with the Machine Learning Approach</strong></u></a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><u><strong>References</strong></u></a></li>
+  </ul></li>
+  <li><a href="#peer-feedback-to-be-completed-next-week" id="toc-peer-feedback-to-be-completed-next-week" class="nav-link" data-scroll-target="#peer-feedback-to-be-completed-next-week">Peer Feedback (to be completed next week)</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div></div></div>
-<!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">DSCI 542 Lab 2</h1>
+<p class="subtitle lead">Creating a Blog Post for Your Audience</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<section id="lab-assignment-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="lab-assignment-instructions">Lab Assignment Instructions</h2>
+<p>In this course, we are using a labor-based grading approach. This means that each task in the lab is graded based on completion rather than evaluation of quality. If a question is completed according to the specifications provided such as meeting the word limit, following the required format, or staying within the allotted time you will receive full credit for that question.</p>
+<p>When submitting your lab, please be sure to:</p>
+<ul>
+<li><p>Include a link to your GitHub repository containing your work as well as a link to your published blog post.</p>
+<p><a href="https://github.ubc.ca/mds-2025-26/DSCI_542_lab2_jfc25" class="uri">https://github.ubc.ca/mds-2025-26/DSCI_542_lab2_jfc25</a></p>
+<p><a href="https://github.com/Jacob-F-Cann/542_Lab2_Blog_Post" class="uri">https://github.com/Jacob-F-Cann/542_Lab2_Blog_Post</a></p>
+<p><a href="https://jacob-f-cann.github.io/542_Lab2_Blog_Post/" class="uri">https://jacob-f-cann.github.io/542_Lab2_Blog_Post/</a></p></li>
+<li><p>Submit a the <code>.qmd</code> file along with a rendered version (either <code>.html</code> or <code>.pdf</code>) of your lab to Gradescope.</p></li>
+<li><p>On Canvas, submit a link to your blog post for peer review.</p></li>
+</ul>
+</section>
+<section id="question-1-understand-your-audience" class="level2">
+<h2 class="anchored" data-anchor-id="question-1-understand-your-audience">Question 1: Understand your audience</h2>
+<p>rubric={completion:5}</p>
+<p>In this lab, you will be tasked to writing a data science blog based on the topic you chose in lab 1.</p>
+<p>As mentioned in Lecture 2, an audience persona is a brief written description of a specific person in your target audience, who might be real or imagined. It should include the following information about the person:</p>
+<ul>
+<li>Their <strong>experience</strong>. How much experience do they have with your subject, and of what kind?</li>
+<li>Their <strong>motivation</strong>. Why do they want to learn about this subject? If they have any specific goals, what are they?</li>
+</ul>
+<p>For example, here are three personas for potential audiences of an explanation of quantum computing:</p>
+<ul>
+<li>Mike is a third-grade student. He has fairly little experience with any computers at all, let alone quantum computers. But he suspects that computers might be able to help his with tough homework problems, and wants to know if this is true of quantum computers.</li>
+<li>Nadine is a fifteen-year-old high school student. She is familiar with computers; most commonly she uses her iPhone to socialize, study, and take photoes. She has never heard of quantum computers before, but likes to impress her friends with cool facts about things she learns.</li>
+<li>Alex is an undergraduate computer science student interested in machine learning and artificial intelligence. They taken courses in chemistry and physics, and knows the basics of how quantum computing differs from classical computing. They are curious about the kinds of problems that quantum computing could be used to solve, and how soon the technology might become commercially available.</li>
+</ul>
+<p>Write an audience persona for the target reader of your blog that is <strong>3-5 sentences long</strong>. Additionally, propose a <strong>minimum of 3 different titles</strong> for your blog. During the lab, we encourage you to exchange the audience persona, the titles, and the abstract with your peers and get their initial feedback.</p>
+<p><strong>Persona:</strong></p>
+<p>Bob is a PhD Student at UBC beginning his investigative research for his thesis on predictive models for battery capacity lifetime degradation. He intends on taking a data science approach to the problem instead of classical physics-based modelling simulation methods, and is looking for blogs, articles and texts covering the subject to generate ideas for his thesis proposal. Bob has a Master’s in Chemical Engineering specializing in battery chemistry as well as a Bachelors degree in chemical engineering. He has taken a lot of online introductory and advanced courses for machine learning basics and applications in preparation for his targeted PhD research. Data science and machine learning is definitely more unfamiliar than pure chemistry, physics and battery design for Bob, so he has a lot to learn still despite his online courses.</p>
+<p><strong>Title 1:</strong> <u>Machine Learning for Battery Lifetime Prediction</u></p>
+<ul>
+<li>Informative but too bland for a title to capture a reader’s attention</li>
+</ul>
+<p><strong>Title 2:</strong> <u>When will my Electric Car Battery Die?</u></p>
+<ul>
+<li>Good hook but too mysterious to be informative</li>
+</ul>
+<p><strong>Title 3:</strong> <u>The Cure to Range Anxiety - Battery Lifetime Prediction with Machine Learning</u></p>
+<ul>
+<li>Title 3 is the strongest in my opinion. It has a hook and is informative of the content</li>
+</ul>
+</section>
+<section id="question-2-write-a-data-science-blog" class="level2">
+<h2 class="anchored" data-anchor-id="question-2-write-a-data-science-blog">Question 2: Write a data science blog</h2>
+<p>rubric={completion: 30}</p>
+<section id="guideline-to-get-started" class="level3">
+<h3 class="anchored" data-anchor-id="guideline-to-get-started">Guideline to get started</h3>
+<p>I highly recommend you check out this <a href="https://towardsdatascience.com/questions-96667b06af5#1d11">guideline</a> from TowardsDataScience.com, a well-known publisher for data science blogs.</p>
+</section>
+<section id="types-of-blog-post-in-data-science" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-blog-post-in-data-science">Types of blog post in data science</h3>
+<p>There are many different types of blog posts that can be written in the field of data science. Some common types of blog posts include:</p>
+<ul>
+<li><strong>Tutorials</strong>: These posts provide step-by-step instructions or guidance on how to perform a specific task in data science, such as using a machine learning algorithm or creating a data visualization using a specific package/language.</li>
+<li><strong>Explanations</strong>: These posts aim to explain complex concepts or techniques in data science in a way that is easy for a general audience to understand. They might include examples or case studies to illustrate the concept or technique.</li>
+<li><strong>News and analysis</strong>: These posts discuss recent news or research in the field of data science, and provide analysis or commentary on the implications or significance of the news or research.</li>
+<li><strong>Personal experiences</strong>: These posts share the experiences of a data scientist or student learning data science, and might include stories about challenges and successes, as well as tips and advice for others interested in pursuing a career in data science.</li>
+<li><strong>Comparisons and contrasts</strong>: These posts compare and contrast different tools, approaches, or concepts in data science, and might include pros and cons or recommendations for when to use each option.</li>
+</ul>
+<p>Overall, there are many different types of blog posts that can be written in data science, and the type of post will depend on the goals and audience of the blog.</p>
+<p>For your inspiration, this is a blog post that Nico Van den Hooff, a MDS alumni, wrote last year<br>
+<a href="https://medium.com/towards-data-science/exploring-the-most-popular-machine-learning-and-deep-learning-github-repositories-90b9ecf12be7">Exploring the Most Popular Machine Learning and Deep Learning GitHub Repositories</a></p>
+</section>
+<section id="length" class="level3">
+<h3 class="anchored" data-anchor-id="length">Length</h3>
+<p>For this assignment, we suggest aiming for a word count of around 1200 (+ or - 300) words, not including code, captions, references, etc. Please consider the amount of time it will take your audience to read your post and keep this in mind as you plan and write your content. We recommend creating a brief outline for the blog first before diving in.</p>
+</section>
+<section id="how-to-write-your-blog" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-write-your-blog">How to write your blog</h3>
+<p>In this question, you are asked to write your blog using Quarto.</p>
+<p>Step 1: Login to Github</p>
+<p>Step 2: Create your <a href="https://quarto.org/docs/websites/website-blog.html">Quarto Blog</a>.</p>
+<p>Step 3: Start writing and finish! Push/publish your changes, and .</p>
+<p>Step 4: Submit the blog’s outline as well as <strong>a link to your blog</strong>. Your blog can be published either via <a href="https://quarto.org/docs/publishing/quarto-pub.html">Quarto Pub</a> or <a href="https://docs.github.com/en/pages">GitHub Pages</a>.</p>
+<p>Your blog will be evaluated for completion based on the word count as well as the link to your blog functioning as expected.</p>
+<p><a href="https://github.com/Jacob-F-Cann">GitHub: @Jacob-F-Cann</a></p>
+<p><a href="https://github.com/Jacob-F-Cann/542_Lab2_Blog_Post">DSCI_542_Lab2 Repo</a></p>
+<p><a href="https://jacob-f-cann.github.io/542_Lab2_Blog_Post/">GitHub Pages for Blog</a></p>
+</section>
+<section id="some-prompts-to-get-you-started-optional" class="level3">
+<h3 class="anchored" data-anchor-id="some-prompts-to-get-you-started-optional">Some prompts to get you started (Optional)</h3>
+<ul>
+<li>What is the main topic or concept you want to write about in your blog post? What makes it interesting or important to your audience?</li>
+<li>What type of data science blog do you want to write? (see different types above)</li>
+<li>What are the key points or ideas you want to include in your blog post? How can you organize these points to create a clear and coherent structure for your post?</li>
+<li>How can you use examples or case studies to illustrate the concepts or techniques you are discussing in your blog post? What are some real-world applications of the topic you are writing about?</li>
+<li>How can you make your blog post engaging and interactive for your audience? What types of media or interactive elements can you include to make your post more interesting and interactive?</li>
+<li>How can you conclude your blog post in a way that leaves a lasting impression on your readers? What are the main takeaways you want your readers to remember after reading your post?</li>
+</ul>
+</section>
+</section>
+<section id="blog-post" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post">Blog Post:</h2>
 <section id="why-should-we-care-about-battery-lifetime-prediction" class="level3">
 <h3 class="anchored" data-anchor-id="why-should-we-care-about-battery-lifetime-prediction"><u>Why Should we Care about Battery Lifetime Prediction?</u></h3>
 <p>Batteries have become widely used in many industries including medical devices, automotive vehicles and energy storage systems. As part of a push for renewable energy solutions to combat climate change and the demand for better wearable and or implantable medical technologies, battery technology has accelerated in growth in recent years. Electric cars are more prevalent than ever, energy storage for renewable solar and wind energy is growing faster than ever and portable battery powered devices are sold by countless companies. The adoption of electric vehicles is divisive to say the least, and a major deterrent for people is “range anxiety”. Range anxiety refers to when people alter or would alter their driving habits or trips due to fear of running out of charge in their electric vehicle battery. This can happen due to poor trip planning, or areas in countries with few electric charger stations where the potential for getting stranded is real.</p>
@@ -287,38 +267,24 @@ Figure&nbsp;5: Real Driving Cycle-Based State of Charge Prediction for EV Batter
 <li><a href="https://www.mdpi.com/2076-3417/11/23/11285">Real Driving Cycle-Based State of Charge Prediction for EV Batteries Using Deep Learning Methods</a></li>
 <li><a href="https://bett.cenex.co.uk/bett-learnings/deep-dive-report-1-drive-cycle-analysis">Deep Dive Analysis 1: Drive Cycle Assessment</a></li>
 </ol>
-
-
-
+</section>
+</section>
+<section id="peer-feedback-to-be-completed-next-week" class="level2">
+<h2 class="anchored" data-anchor-id="peer-feedback-to-be-completed-next-week">Peer Feedback (to be completed next week)</h2>
+<p>After the submission deadline, you will get randomly assigned 2 blogs from your classmates to review.</p>
+<p>Peer review allows you to receive feedback on your writing from multiple peers, which help you see your work more objectively and identify areas where they can revise and improve their writing. It also fosters a sense of community and a safe environment to collaborate and help each other with constructive feedback.</p>
+<p>Read the blog posts carefully, paying attention to the content, organization, and style of the writing. Consider the following questions as you review:</p>
+<ul>
+<li>Is the content of the blog post accurate and well-researched?</li>
+<li>Is the structure of the blog post clear and logical?</li>
+<li>Are the ideas in the blog post effectively communicated and easy to understand?</li>
+<li>Is the writing style of the blog post engaging and appropriate for the audience?</li>
+</ul>
+<p>Write a review for each of the blog posts, addressing the above questions and any other issues you feel are relevant. Use specific examples from the posts to support your points.</p>
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1768694733935" data-listing-reading-time-sort="7" data-listing-word-count-sort="1332">
-<div class="thumbnail"><a href="./posts/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/img/Fig5.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/index.html" class="no-external">The Cure to Range Anxiety</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/index.html" class="no-external">Battery Lifetime Prediction with Machine Learning</a>
-</div>
-<div class="delink listing-description"><a href="./posts/index.html" class="no-external">
-Batteries have become widely used in many industries including medical devices, automotive vehicles and energy storage systems. As part of a push for renewable energy…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/index.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
